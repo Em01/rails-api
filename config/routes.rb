@@ -1,4 +1,8 @@
 Odot::Application.routes.draw do
+  namespace :api do
+    resources :todo_lists
+  end
+  
   get 'pages/home'
 
   get "/login" => "user_sessions#new", as: :login
