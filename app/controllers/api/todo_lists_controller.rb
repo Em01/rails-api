@@ -26,6 +26,15 @@ class Api::TodoListsController < ApplicationController
 		end
 	end
 
+	def destroy
+		list = TodoList.find(params[:id])
+		list.destroy
+		render json: {
+			status: 200,
+			message: "Successfully deleted To-do List."
+		}.to_json
+	end
+
 	private
 	def list_params
 		params.require("todo_list").permit("title")
